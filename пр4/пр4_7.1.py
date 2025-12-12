@@ -1,16 +1,16 @@
 try:
     a = int(input("Введите число A: "))
     b = int(input("Введите число B: "))
-    s = 0
+    prod = a
 
-    while a > b:
-        print("Число А должно быть больше B!")
+    while a > b :
+        print("Первое число должно быль меньше второго!")
         a = int(input("Введите число A: "))
         b = int(input("Введите число B: "))
 
-    while a <= b:
-        s += a
+    while a < b:
         a += 1
-    print(s)
+        prod *= a
+    print(f"Произведение: {prod}")
 except ValueError:
     print("Ошибка типа данных")
