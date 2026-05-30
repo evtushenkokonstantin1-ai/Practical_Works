@@ -1,4 +1,4 @@
-with open('suka_1.txt', 'r') as f:
+with open('6.1.txt', 'r') as f:
     nums = list(map(int, f.read().split()))
 
     count = len(nums)
@@ -18,8 +18,10 @@ modified = []
 for i in nums:
     if i > 5:
         modified.append(i * 2)
+    else:
+        modified.append(i)
 
-with open('suka_final.txt', 'w', encoding='utf-8') as f:
+with open('6.2_final.txt', 'w', encoding='utf-8') as f:
     f.write(f'Количество элементов: {nums}\n')
     f.write(f'Произведение элементов: {prod}\n')
     f.write(f'Повторяющиеся элементы: {rep}\n')
