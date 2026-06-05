@@ -1,4 +1,4 @@
-f = open("text18-6", "r", encoding="utf-8")
+f = open("text18-6.txt", "r", encoding="utf-16")
 text = f.read()
 f.close()
 
@@ -22,10 +22,10 @@ for symbol in text:
     else:
         new_text += symbol
 
-f = open("result.txt", "w", encoding="utf-8")
+f = open("result.txt", "w", encoding="utf-16")
 
 f.write(new_text)
 
 f.close()
 
-print("Файл result.txt создан")
+print("Файл создан")
