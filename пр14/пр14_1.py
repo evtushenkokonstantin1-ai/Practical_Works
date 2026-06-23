@@ -1,63 +1,37 @@
-from tkinter import *
-from tkinter import ttk
+import tkinter as tk
 
-root = Tk()
-root.title("Registration")
-root.geometry("1920x1080")
-root.configure(bg="#6a5acd")
+def check_numbers():
+    try:
+        a = int(entry_a.get())
+        b = int(entry_b.get())
 
-# --- КАРТОЧКА ---
-frame = Frame(root, bg="white", padx=200, pady=280)
-frame.place(relx=0.5, rely=0.5, anchor="center")
+        condition = (a % 2 == 0 or b % 2 == 0)
 
-# --- СЕТКА (ВАЖНО) ---
-frame.columnconfigure(0, weight=1)
-frame.columnconfigure(1, weight=2)
+        if condition:
+            lbl_result.config(text="Результат: True (есть четное число)", fg="green")
+        else:
+            lbl_result.config(text="Результат: False (оба числа нечетные)", fg="red")
 
-# --- ЗАГОЛОВОК ---
-Label(frame,text="EVENT REGISTRATION FORM",font=("Arial", 18, "bold"),bg="black",fg="white",).grid(row=0, column=0, columnspan=2, pady=(0, 200))
+    except ValueError:
+        lbl_result.config(text="Ошибка: Введите корректные целые числа!", fg="orange")
 
-# --- ПОЛЯ ---
-Label(frame, text="Name", bg="white").grid(row=1, column=0, sticky="w", pady=10)
-Entry(frame).grid(row=1, column=1, sticky="ew", pady=10)
+root = tk.Tk()
+root.title("Проверка четности")
+root.geometry("400x250")
+root.configure(pady=20, padx=20)
 
-Label(frame, text="Company", bg="white").grid(row=2, column=0, sticky="w", pady=10)
-Entry(frame).grid(row=2, column=1, sticky="ew", pady=10)
+tk.Label(root, text="Введите число A:", font=("Arial", 10)).pack(anchor="w", pady=(0, 2))
+entry_a = tk.Entry(root, font=("Arial", 10))
+entry_a.pack(fill="x", pady=(0, 10))
 
-Label(frame, text="Email", bg="white").grid(row=3, column=0, sticky="w", pady=10)
-Entry(frame).grid(row=3, column=1, sticky="ew", pady=10)
+tk.Label(root, text="Введите число B:", font=("Arial", 10)).pack(anchor="w", pady=(0, 2))
+entry_b = tk.Entry(root, font=("Arial", 10))
+entry_b.pack(fill="x", pady=(0, 15))
 
-Label(frame, text="Phone", bg="white").grid(row=4, column=0, sticky="w", pady=10)
-Entry(frame).grid(row=4, column=1, sticky="ew", pady=10)
+btn_check = tk.Button(root, text="Проверить условие", font=("Arial", 10, "bold"), command=check_numbers)
+btn_check.pack(fill="x", ipady=5, pady=(0, 15))
 
-# --- ВЫПАДАЮЩИЙ СПИСОК ---
-Label(frame, text="Subject", bg="white").grid(row=5, column=0, sticky="w", pady=10)
-
-combo = ttk.Combobox(frame, values=["Option 1", "Option 2", "Option 3"])
-combo.grid(row=5, column=1, sticky="ew", pady=10)
-
-# --- RADIO ---
-Label(frame, text="Are you an existing customer?", bg="white").grid(
-    row=6, column=0, columnspan=2, pady=(20, 10)
-)
-
-var = StringVar(value="Yes")
-Radiobutton(frame, text="Yes", variable=var, value="Yes", bg="white").grid(row=7, column=0, sticky="w")
-Radiobutton(frame, text="No", variable=var, value="No", bg="white").grid(row=7, column=1, sticky="w")
-
-# --- РАСТЯГИВАЕМ НИЗ (чтобы кнопка ушла вниз) ---
-frame.rowconfigure(8, weight=1)
-
-# --- КНОПКА (ПРАВЫЙ НИЖНИЙ УГОЛ) ---
-reg_button = Button(
-    frame,
-    text="REGISTER",
-    bg="red",
-    fg="white",
-    width=20,
-    height=2
-)
-
-reg_button.grid(row=9, column=1, sticky="e", pady=(30, 0))
+lbl_result = tk.Label(root, text="Результат: ", font=("Arial", 11, "bold"))
+lbl_result.pack(pady=5)
 
 root.mainloop()
