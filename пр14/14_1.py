@@ -1,3 +1,7 @@
+#В соответствии с номером варианта перейти по ссылке https://uicookies.com/wp-content/uploads/2019/05/Reg-Form-v5.jpg
+# на прототип. Реализовать его в IDE PyCharm Community с применением пакета tk. Получить интерфейс максимально
+#приближенный к оригиналу (см. таблицу 1).
+
 import tkinter as tk
 from tkinter import ttk
 
